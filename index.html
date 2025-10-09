@@ -4,12 +4,185 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bram Welding</title>
-  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ===== RESET & GLOBAL ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9fafc;
+      color: #222;
+      line-height: 1.6;
+    }
+    a { color: #0056b3; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: 95%;
+      max-width: 1000px;
+      margin: auto;
+      padding: 1rem;
+    }
+
+    /* ===== HEADER ===== */
+    .site-header {
+      background: #e8f1ff;
+      border-bottom: 3px solid #0d6efd;
+      border-radius: 0 0 12px 12px;
+      margin-bottom: 1rem;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 10px;
+    }
+    .site-logo {
+      height: 70px;
+      width: 70px;
+      object-fit: contain;
+    }
+    .brand-text h1 {
+      font-size: 1.6rem;
+      color: #0d6efd;
+    }
+    .brand-text p.tag {
+      color: #444;
+      font-size: 0.9rem;
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      background: #0d6efd;
+      padding: 10px;
+      border-radius: 0 0 8px 8px;
+    }
+    .nav a {
+      color: white;
+      background: #1e7eff;
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .nav a:hover {
+      background: #0056b3;
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      padding: 1.2rem;
+      margin: 1.2rem 0;
+    }
+    .card h2 {
+      color: #0d6efd;
+      margin-bottom: 0.7rem;
+      border-bottom: 2px solid #e0e7ff;
+      padding-bottom: 0.3rem;
+    }
+
+    /* ===== TABLE ===== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background: #e8f1ff;
+      color: #0d6efd;
+    }
+
+    /* ===== FORMS ===== */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 0.5rem;
+    }
+    input, select, textarea, button {
+      font-size: 1rem;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background: #0d6efd;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover { background: #084dbf; }
+
+    /* ===== GALLERY ===== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+    }
+    .small { font-size: 0.85rem; color: #555; }
+
+    /* ===== FOOTER ===== */
+    .site-footer {
+      text-align: center;
+      background: #e8f1ff;
+      border-top: 3px solid #0d6efd;
+      border-radius: 12px 12px 0 0;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+    .site-footer a {
+      color: #0d6efd;
+      font-weight: 600;
+    }
+
+    /* ===== WHATSAPP BUTTONS ===== */
+    .wa-footer, .wa-float {
+      display: inline-block;
+      background: #25d366;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-weight: bold;
+    }
+    .wa-float {
+      position: fixed;
+      bottom: 15px;
+      right: 15px;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .brand { flex-direction: column; text-align: center; }
+      .site-logo { height: 60px; width: 60px; }
+    }
+  </style>
 </head>
 <body>
   <header class="site-header container">
-    <div class="brand"><img src="assets/images/logo.png" alt="Logo Bram Welding" class="site-logo"/>
-        <div class="brand-text">
+    <div class="brand">
+      <img src="assets/images/logo.png" alt="Logo Bram Welding" class="site-logo"/>
+      <div class="brand-text">
         <h1>Bram Welding</h1>
         <p class="tag">Jasa Las & Konstruksi — Dsn Keling, Kepung</p>
       </div>
@@ -21,22 +194,24 @@
       <a href="#konsultasi">Konsultasi Gratis</a>
       <a href="#simulasi">Simulasi Biaya</a>
     </nav>
-    
+  </header>
+
   <main class="container">
     <section id="profil" class="card">
       <h2>Profil</h2>
-      <p>Bram Welding — Jasa las & konstruksi, spesialis pagar, pintu harmonika, atap baja ringan, galvalum dan lainnya.
-      Alamat: Dsn Keling, Ds. Keling Kec. Kepung, RT.8 RW.02 Depan Musholla Al Amin. Kontak: <a href="tel:0895702042736">0895702042736</a>.</p>
+      <p><strong>Bram Welding</strong> — jasa las & konstruksi profesional, spesialis pagar, pintu harmonika, atap baja ringan, galvalum, dan lain-lain.<br>
+      <strong>Alamat:</strong> Dsn Keling, Ds. Keling Kec. Kepung, RT.8 RW.02 (Depan Musholla Al Amin).<br>
+      <strong>Kontak:</strong> <a href="tel:0895702042736">0895702042736</a></p>
     </section>
 
     <section id="harga" class="card">
-      <h2>Daftar Harga (estimasi)</h2>
-      <table class="price-table">
-        <thead><tr><th>Jasa</th><th>Satuan</th><th>Harga/m</th></tr></thead>
-        <tbody id="price-list">
+      <h2>Daftar Harga (Estimasi)</h2>
+      <table>
+        <thead><tr><th>Jasa</th><th>Satuan</th><th>Harga</th></tr></thead>
+        <tbody>
           <tr><td>Las Pagar</td><td>m</td><td>Rp 150.000</td></tr>
           <tr><td>Pintu Harmonika</td><td>unit</td><td>Rp 1.250.000</td></tr>
-          <tr><td>Atap Baja Ringan</td><td>m2</td><td>Rp 175.000</td></tr>
+          <tr><td>Atap Baja Ringan</td><td>m²</td><td>Rp 175.000</td></tr>
           <tr><td>Pintu & Jendela Galvalum</td><td>unit</td><td>Rp 900.000</td></tr>
         </tbody>
       </table>
@@ -44,7 +219,7 @@
 
     <section id="produk" class="card">
       <h2>Produk Kami</h2>
-      <p>Upload produk baru (file gambar + nama + kategori). Produk disimpan ke Firebase Storage / Firestore dan ditampilkan publik.</p>
+      <p>Upload produk baru (gambar + nama + kategori). Data disimpan ke Firebase dan tampil otomatis di bawah ini.</p>
       <form id="product-form">
         <input type="text" id="p-name" placeholder="Nama produk (contoh: Las Pagar)" required />
         <select id="p-cat">
@@ -58,7 +233,7 @@
         <button type="submit">Upload Produk</button>
       </form>
       <div id="gallery" class="gallery"></div>
-      <p class="small">Catatan: untuk men-activate penyimpanan produk di web, lengkapi file <code>firebase-config.example.js</code> dengan kredensial Firebase Anda dan ganti nama jadi <code>firebase-config.js</code>.</p>
+      <p class="small">*Aktifkan Firebase di file <code>firebase-config.js</code> agar fitur upload berfungsi.</p>
     </section>
 
     <section id="konsultasi" class="card">
@@ -73,17 +248,16 @@
 
     <section id="simulasi" class="card">
       <h2>Simulasi Perkiraan Biaya</h2>
-      <p>Masukkan detail pekerjaan untuk mendapatkan rincian estimasi biaya (bahan, tenaga, total).</p>
+      <p>Masukkan detail pekerjaan untuk melihat estimasi biaya bahan, tenaga, dan total.</p>
       <form id="sim-form">
         <select id="s-type">
           <option value="las_pagar">Las Pagar (per m)</option>
           <option value="pintu_harmonika">Pintu Harmonika (unit)</option>
-          <option value="atap_baja">Atap Baja Ringan (per m2)</option>
+          <option value="atap_baja">Atap Baja Ringan (per m²)</option>
           <option value="pintu_galvalum">Pintu & Jendela Galvalum (unit)</option>
         </select>
-        <input type="number" id="s-qty" placeholder="Panjang (m) atau Jumlah (unit)" min="1" value="1" required />
-        <label>Harga bahan / satuan (opsional, kosong = default)</label>
-        <input type="number" id="s-price" placeholder="Harga satuan (Rp)" min="0" />
+        <input type="number" id="s-qty" placeholder="Panjang (m) / Jumlah (unit)" min="1" value="1" required />
+        <input type="number" id="s-price" placeholder="Harga satuan (opsional)" min="0" />
         <button type="submit">Hitung Estimasi</button>
       </form>
       <div id="sim-result" class="sim-result" hidden>
@@ -97,8 +271,8 @@
     <p>© Bram Welding — <a href="tel:0895702042736">0895702042736</a> — Dsn Keling, Kepung</p>
     <p><a class="wa-footer" href="https://wa.me/62895702042736?text=Halo%20Bram%20Welding,%20saya%20ingin%20konsultasi." target="_blank" rel="noopener">Chat Pramono Sekarang</a></p>
   </footer>
-  <a class="wa-float" href="https://wa.me/62895702042736?text=Halo%20Bram%20Welding,%20saya%20ingin%20konsultasi." target="_blank" rel="noopener">Chat Pramono</a>
-</body>
+
+  <a class="wa-float" href="https://wa.me/62895702042736?text=Halo%20Bram%20Welding,%20saya%20ingin%20konsultasi." target="_blank" rel="noopener">💬 Chat Pramono</a>
 
   <script src="firebase-config.example.js"></script>
   <script src="app.js"></script>
