@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bram Welding</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header container">
+    <div class="brand">
+      <div class="logo">BW</div>
+      <div class="brand-text">
+        <h1>Bram Welding</h1>
+        <p class="tag">Jasa Las & Konstruksi — Dsn Keling, Kepung</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#profil">Profil</a>
+      <a href="#harga">Daftar Harga</a>
+      <a href="#produk">Produk Kami</a>
+      <a href="#konsultasi">Konsultasi Gratis</a>
+      <a href="#simulasi">Simulasi Biaya</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section id="profil" class="card">
+      <h2>Profil</h2>
+      <p>Bram Welding — Jasa las & konstruksi, spesialis pagar, pintu harmonika, atap baja ringan, galvalum dan lainnya.
+      Alamat: Dsn Keling, Ds. Keling Kec. Kepung, RT.8 RW.02 Depan Musholla Al Amin. Kontak: <a href="tel:0895702042736">0895702042736</a>.</p>
+    </section>
+
+    <section id="harga" class="card">
+      <h2>Daftar Harga (estimasi)</h2>
+      <table class="price-table">
+        <thead><tr><th>Jasa</th><th>Satuan</th><th>Harga/m</th></tr></thead>
+        <tbody id="price-list">
+          <tr><td>Las Pagar</td><td>m</td><td>Rp 150.000</td></tr>
+          <tr><td>Pintu Harmonika</td><td>unit</td><td>Rp 1.250.000</td></tr>
+          <tr><td>Atap Baja Ringan</td><td>m2</td><td>Rp 175.000</td></tr>
+          <tr><td>Pintu & Jendela Galvalum</td><td>unit</td><td>Rp 900.000</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="produk" class="card">
+      <h2>Produk Kami</h2>
+      <p>Upload produk baru (file gambar + nama + kategori). Produk disimpan ke Firebase Storage / Firestore dan ditampilkan publik.</p>
+      <form id="product-form">
+        <input type="text" id="p-name" placeholder="Nama produk (contoh: Las Pagar)" required />
+        <select id="p-cat">
+          <option>Las Pagar</option>
+          <option>Pintu Harmonika</option>
+          <option>Atap Baja Ringan</option>
+          <option>Pagar</option>
+          <option>Pintu & Jendela Galvalum</option>
+        </select>
+        <input type="file" id="p-file" accept="image/*" required />
+        <button type="submit">Upload Produk</button>
+      </form>
+      <div id="gallery" class="gallery"></div>
+      <p class="small">Catatan: untuk men-activate penyimpanan produk di web, lengkapi file <code>firebase-config.example.js</code> dengan kredensial Firebase Anda dan ganti nama jadi <code>firebase-config.js</code>.</p>
+    </section>
+
+    <section id="konsultasi" class="card">
+      <h2>Konsultasi Gratis</h2>
+      <form id="consult-form">
+        <input type="text" id="c-name" placeholder="Nama" required/>
+        <input type="tel" id="c-phone" placeholder="No. WhatsApp" required/>
+        <textarea id="c-msg" placeholder="Tulis pesan / kebutuhan" required></textarea>
+        <button type="submit">Kirim via WhatsApp</button>
+      </form>
+    </section>
+
+    <section id="simulasi" class="card">
+      <h2>Simulasi Perkiraan Biaya</h2>
+      <p>Masukkan detail pekerjaan untuk mendapatkan rincian estimasi biaya (bahan, tenaga, total).</p>
+      <form id="sim-form">
+        <select id="s-type">
+          <option value="las_pagar">Las Pagar (per m)</option>
+          <option value="pintu_harmonika">Pintu Harmonika (unit)</option>
+          <option value="atap_baja">Atap Baja Ringan (per m2)</option>
+          <option value="pintu_galvalum">Pintu & Jendela Galvalum (unit)</option>
+        </select>
+        <input type="number" id="s-qty" placeholder="Panjang (m) atau Jumlah (unit)" min="1" value="1" required />
+        <label>Harga bahan / satuan (opsional, kosong = default)</label>
+        <input type="number" id="s-price" placeholder="Harga satuan (Rp)" min="0" />
+        <button type="submit">Hitung Estimasi</button>
+      </form>
+      <div id="sim-result" class="sim-result" hidden>
+        <h3>Rincian Estimasi</h3>
+        <table id="sim-table"></table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer container">
+    <p>© Bram Welding — <a href="tel:0895702042736">0895702042736</a> — Dsn Keling, Kepung</p>
+  </footer>
+
+  <script src="firebase-config.example.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
