@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Diagram Alur - Fenomena UMKM Bhayangkari</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0A2D57;        /* police blue */
+      --card:#ffffff;
+      --card-text:#0A2D57;
+      --muted:#e6eef9;
+      --accent:#0f73c2;
+      --shadow: 0 10px 30px rgba(3,20,40,0.45);
+    }
+
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,var(--bg) 0%, #07233e 100%);
+      color:var(--card-text);
+      -webkit-font-smoothing:antialiased;
+    }
+
+    .wrap{
+      max-width:820px;
+      margin:36px auto;
+      padding:28px;
+    }
+
+    .header{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .logo{
+      width:64px;
+      height:64px;
+      border-radius:12px;
+      background:linear-gradient(135deg,#083a6a,#0f73c2);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:white;
+      font-weight:800;
+      box-shadow: var(--shadow);
+      flex:0 0 64px;
+    }
+    .title{
+      color:var(--card);
+    }
+    .title h1{
+      margin:0;
+      font-size:20px;
+      letter-spacing:0.2px;
+    }
+    .title p{
+      margin:2px 0 0;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* canvas area */
+    #flow-area{
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:28px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .flow{
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+      align-items:center;
+      padding:8px 0 28px;
+    }
+
+    .node{
+      width:100%;
+      max-width:680px;
+      background:var(--card);
+      color:var(--card-text);
+      border-radius:12px;
+      padding:18px 22px;
+      box-shadow: 0 6px 20px rgba(3,20,40,0.18);
+      position:relative;
+      border-left:6px solid rgba(11,77,153,0.08);
+    }
+    .node .heading{
+      font-weight:700;
+      font-size:16px;
+      margin-bottom:6px;
+      color:var(--accent);
+    }
+    .node .desc{
+      font-size:14px;
+      color:#0b2a45;
+      line-height:1.4;
+    }
+
+    /* arrow */
+    .arrow{
+      width:28px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    /* bottom controls */
+    .controls{
+      margin-top:18px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+    }
+    .btn{
+      background:transparent;
+      color:var(--card);
+      border:1px solid rgba(255,255,255,0.12);
+      padding:10px 14px;
+      border-radius:10px;
+      font-weight:600;
+      cursor:pointer;
+      transition:all .18s ease;
+    }
+    .btn.primary{
+      background:linear-gradient(90deg,#0f73c2,#0a9ad9);
+      border:0;
+      box-shadow: 0 8px 24px rgba(9,72,128,0.25);
+    }
+    .btn:active{ transform:translateY(1px); }
+    .note{
+      color:var(--muted);
+      font-size:13px;
+      margin-right:auto;
+    }
+
+    /* responsive */
+    @media (max-width:720px){
+      .wrap{ padding:14px; }
+      .node{ padding:14px; }
+      .title h1{ font-size:16px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <div class="logo">UM</div>
+      <div class="title">
+        <h1>Fenomena UMKM Bhayangkari</h1>
+        <p>PENINGKATAN KINERJA UMKM MELALUI ORIENTASI KEWIRAUSAHAAN & KAPABILITAS JEJARING</p>
+      </div>
+    </div>
+
+    <div id="flow-area">
+      <div class="flow" id="flowchart">
+        <!-- Node 1 -->
+        <div class="node">
+          <div class="heading">Fenomena Global UMKM</div>
+          <div class="desc">• >90% perusahaan dunia kategori UMKM; menyerap 50–60% tenaga kerja (negara berkembang); kontributor ≈40% PDB global; resilien saat krisis.</div>
+        </div>
+
+        <div class="arrow">
+          <svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 0 V28" stroke="#ffffff50" stroke-width="4" stroke-linecap="round"/>
+            <path d="M6 22 L14 30 L22 22" stroke="#ffffff50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Node 2 -->
+        <div class="node">
+          <div class="heading">Dominasi UMKM Indonesia</div>
+          <div class="desc">• 66 juta UMKM (Mei 2025), naik dari 64,2 juta; menyumbang 61% PDB & menyerap 97% tenaga kerja — ekosistem krusial nasional.</div>
+        </div>
+
+        <div class="arrow">
+          <svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 0 V28" stroke="#ffffff50" stroke-width="4" stroke-linecap="round"/>
+            <path d="M6 22 L14 30 L22 22" stroke="#ffffff50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Node 3 -->
+        <div class="node">
+          <div class="heading">Peran Perempuan Sangat Besar</div>
+          <div class="desc">• >60% UMKM dikelola perempuan — berperan pada pemberdayaan sosial dan pengurangan ketimpangan gender.</div>
+        </div>
+
+        <div class="arrow">
+          <svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 0 V28" stroke="#ffffff50" stroke-width="4" stroke-linecap="round"/>
+            <path d="M6 22 L14 30 L22 22" stroke="#ffffff50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Node 4 -->
+        <div class="node">
+          <div class="heading">Komunitas Kunci: UMKM Bhayangkari</div>
+          <div class="desc">• Organisasi istri anggota POLRI; modal sosial kuat, jejaring nasional, identitas kolektif; Bazar 2025: 548 stan, pelatihan & talkshow.</div>
+        </div>
+
+        <div class="arrow">
+          <svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 0 V28" stroke="#ffffff50" stroke-width="4" stroke-linecap="round"/>
+            <path d="M6 22 L14 30 L22 22" stroke="#ffffff50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Node 5 -->
+        <div class="node">
+          <div class="heading">Masalah yang Dihadapi UMKM Bhayangkari</div>
+          <div class="desc">
+            • Kesenjangan digital (hanya 25,5 juta UMKM go-digital)<br>
+            • Akses modal terbatas (kredit UMKM ≈21%) dan bias gender<br>
+            • Inovasi rendah & produk tradisional<br>
+            • Orientasi kewirausahaan & kapabilitas jejaring belum optimal
+          </div>
+        </div>
+
+        <div class="arrow">
+          <svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 0 V28" stroke="#ffffff50" stroke-width="4" stroke-linecap="round"/>
+            <path d="M6 22 L14 30 L22 22" stroke="#ffffff50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Node 6 -->
+        <div class="node">
+          <div class="heading">Gap Teoretis</div>
+          <div class="desc">• RBV: fokus resources (statik). • SECI: fokus proses pengetahuan (dinamis). • Keduanya jarang diintegrasikan untuk UMKM perempuan.</div>
+        </div>
+
+        <div class="arrow">
+          <svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 0 V28" stroke="#ffffff50" stroke-width="4" stroke-linecap="round"/>
+            <path d="M6 22 L14 30 L22 22" stroke="#ffffff50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Node 7 -->
+        <div class="node">
+          <div class="heading">Solusi Konseptual & Variabel Penelitian</div>
+          <div class="desc">
+            Integrasi RBV + SECI + variabel applied:<br>
+            • Orientasi Kewirausahaan (innovation, proactiveness, risk-taking)<br>
+            • Kapabilitas Jejaring<br>
+            • Dukungan Komitmen Perilaku<br>
+            • Kepemimpinan Transformasional
+          </div>
+        </div>
+
+        <div class="arrow">
+          <svg width="28" height="40" viewBox="0 0 28 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 0 V28" stroke="#ffffff50" stroke-width="4" stroke-linecap="round"/>
+            <path d="M6 22 L14 30 L22 22" stroke="#ffffff50" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Node 8 -->
+        <div class="node">
+          <div class="heading">Problem Utama Penelitian</div>
+          <div class="desc">
+            Bagaimana meningkatkan kinerja UMKM Bhayangkari melalui penguatan orientasi kewirausahaan & kapabilitas jejaring, dimediasi dukungan komitmen perilaku dan kepemimpinan transformasional?
+          </div>
+        </div>
+
+      </div> <!-- flow -->
+    </div> <!-- flow-area -->
+
+    <div class="controls">
+      <div class="note">Format: PNG. Warna: Biru Polisi.</div>
+      <button class="btn" id="btn-reset" title="Reset view" onclick="window.scrollTo({top:0,behavior:'smooth'})">Scroll ke atas</button>
+      <button class="btn primary" id="btn-download">Download PNG</button>
+    </div>
+
+    <!-- html2canvas for PNG export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+      const target = document.getElementById('flow-area');
+      document.getElementById('btn-download').addEventListener('click', () => {
+        // temporarily increase scale to make PNG sharp
+        const prevTransform = target.style.transform;
+        html2canvas(target, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: null,
+          allowTaint: true
+        }).then(canvas => {
+          const link = document.createElement('a');
+          link.download = 'diagram_fenomena_umkm_bhayangkari.png';
+          link.href = canvas.toDataURL('image/png');
+          link.click();
+        }).catch(err => {
+          alert('Gagal mengekspor. Coba ulang atau buka di browser lain.');
+          console.error(err);
+        });
+      });
+    </script>
+  </div>
+</body>
+</html>
